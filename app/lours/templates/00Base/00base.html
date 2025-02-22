@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="dark uk-theme-neutral franken-component" lang="es">
+
+{% block head %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="title" content="CTL">
+    <meta name="description" content="CTL">
+    <meta name="author" content="https://github.com/Grimcall">
+
+    <title>{{ title }}</title>
+
+    {% block styles %}
+        <link rel="stylesheet" type="text/css" href="{% static 'output.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'resources/css/fontawesome/all.min.css' %}">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">     
+    {% endblock %}
+
+    <meta name="keywords" content="">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="Spanish">
+    <meta name="revisit-after" content="2 days">
+  </head>
+  
+{% endblock %}
+
+{% block body %}
+<body class="font-poppins bg-background text-foreground franken-component flex">
+
+    {% block app_body %}
+    <div id="app" class="flex-grow min-h-screen xl:mx-auto xl:max-w-8xl franken-component p-4">
+        {% block content %}
+        {% endblock %}
+    </div>
+    {% endblock %}
+</body>
+{% endblock %}
+
+<footer>
+    {% block footer %}
+    {% endblock %}
+</footer>
+
+{% block scripts %}
+<script src="{% static 'resources/js/jquery/jquery.min.js' %}"></script>
+<script type="module" src="{% static 'app.js' %}"></script>
+<script type="module" src="{% static 'resources/js/brainrotAliases.js' %}"></script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+{% endblock %}
+
+
+</html>
