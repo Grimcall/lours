@@ -11,4 +11,8 @@ urlpatterns = [
     path('create/image/', views.create_image, name='create_image'),
     path('create/note/', views.create_note, name='create_note'),
     path('create/video/', views.create_video, name='create_video'),
+    path('content/<int:content_id>/', views.get_content, name='get_content'),
+    path('content/<int:content_id>/update/', views.update_content, name='update_content'),
+    path('content/<int:content_id>/delete/', views.delete_content, name='delete_content'),
+    path('logout/', views.logout_view, name='logout'),
 ]

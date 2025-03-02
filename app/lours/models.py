@@ -27,6 +27,10 @@ class NoteContent(models.Model):
     content = models.ForeignKey(Content, on_delete=models.CASCADE)
     text = models.TextField()
 
+#class AudioContent(models.Model):
+#    content = models.ForeignKey(Content, on_delete=models.CASCADE)
+#    audio = models.FileField(upload_to='audios/')
+
 class VideoContent(models.Model):
     content = models.ForeignKey(Content, on_delete=models.CASCADE)
     video = models.FileField(upload_to='videos/')

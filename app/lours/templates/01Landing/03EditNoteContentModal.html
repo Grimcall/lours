@@ -1,0 +1,25 @@
+<div id="edit-note-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden">
+    <div class="modal-content bg-white p-6 rounded-lg shadow-lg w-full max-w-md mx-auto mt-20">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-xl font-bold">Edit Note</h2>
+            <button onclick="closeModal('edit-note-modal')" class="text-gray-500 hover:text-gray-700">
+                <span class="text-2xl">&times;</span>
+            </button>
+        </div>
+        <form id="edit-note-form" method="POST" action="">
+            {% csrf_token %}
+            <input type="hidden" name="_method" value="PUT">
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Title</label>
+                <input type="text" name="title" id="edit-note-title" class="w-full border rounded px-3 py-2" required>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Note Content</label>
+                <textarea name="content" id="edit-note-content" class="w-full border rounded px-3 py-2" rows="8" required></textarea>
+            </div>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">
+                Update Note
+            </button>
+        </form>
+    </div>
+</div>

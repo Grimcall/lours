@@ -1,0 +1,85 @@
+ <!-- Modal for Content Creation -->
+ <div id="content-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden">
+    <div class="modal-content bg-white p-6 rounded-lg shadow-lg w-full max-w-md mx-auto mt-20">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-xl font-bold">Create New Content</h2>
+            <button onclick="closeModal('content-modal')" class="text-gray-500 hover:text-gray-700">
+                <span class="text-2xl">&times;</span>
+            </button>
+        </div>
+
+        <!-- Content Type Selection -->
+
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2">Content Type:</label>
+            <select id="content-type-select" onchange="showContentForm()" class="w-full border rounded px-3 py-2">
+                <option value="">Select Type</option>
+                <option value="text">Text</option>
+                <option value="image">Image</option>
+                <option value="note">Note</option>
+                <option value="video">Video</option>
+            </select>
+        </div>
+
+        <!-- Dynamic Forms -->
+        <form id="text-form" class="content-form hidden" method="POST" action="{% url 'create_text' %}">
+            {% csrf_token %}
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Title</label>
+                <input type="text" name="title" class="w-full border rounded px-3 py-2" required>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Content</label>
+                <textarea name="content" class="w-full border rounded px-3 py-2" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">
+                Submit Text
+            </button>
+        </form>
+
+        <form id="image-form" class="content-form hidden" method="POST" action="{% url 'create_image' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Title</label>
+                <input type="text" name="title" class="w-full border rounded px-3 py-2" required>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Image</label>
+                <input type="file" name="image" accept="image/*" class="w-full border rounded px-3 py-2" required>
+            </div>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">
+                Upload Image
+            </button>
+        </form>
+
+        <form id="note-form" class="content-form hidden" method="POST" action="{% url 'create_note' %}">
+            {% csrf_token %}
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Title</label>
+                <input type="text" name="title" class="w-full border rounded px-3 py-2" required>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Note Content</label>
+                <textarea name="content" class="w-full border rounded px-3 py-2" rows="6" required></textarea>
+            </div>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">
+                Save Note
+            </button>
+        </form>
+
+        <form id="video-form" class="content-form hidden" method="POST" action="{% url 'create_video' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Title</label>
+                <input type="text" name="title" class="w-full border rounded px-3 py-2" required>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Video</label>
+                <input type="file" name="video" accept="video/*" class="w-full border rounded px-3 py-2" required>
+            </div>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">
+                Upload Video
+            </button>
+        </form>
+    </div>
+</div>
