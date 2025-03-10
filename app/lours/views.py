@@ -5,10 +5,13 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse, HttpResponseRedirect
 from django.core.paginator import Paginator
+
 from .models import Content, TextContent, ImageContent, NoteContent, VideoContent
+from lours.py_utils import bcolors
+
 import json
 
-ITEMS_PER_PAGE = 10
+ITEMS_PER_PAGE = 6
 # Create your views here.
 def index(request):
     if not request.user.is_authenticated:
@@ -85,8 +88,8 @@ def auth(request):
             login(request, user)
             return redirect('index')
         else:
-            print("Invalid password")
-            return HttpResponseRedirect('/auth/')
+            print(bcolors.FAIL + "Invalid password" + bcolors.ENDC)
+            return render(request, '02Auth/00auth.html', {'error': 'Invalid password'})
     return render(request, '02Auth/00auth.html')
 
 @login_required

@@ -34,11 +34,12 @@
 <body class="font-poppins bg-background text-foreground franken-component flex">
 
     {% block app_body %}
-    <div id="app" class="flex-grow min-h-screen xl:mx-auto xl:max-w-8xl franken-component p-4">
-        {% block content %}
-        {% endblock %}
-    </div>
+        <div id="app" class="flex-grow min-h-screen xl:mx-auto xl:max-w-8xl franken-component">
+            {% block content %}
+            {% endblock %}
+        </div>
     {% endblock %}
+    
 </body>
 {% endblock %}
 
